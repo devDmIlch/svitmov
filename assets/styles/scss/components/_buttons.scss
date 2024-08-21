@@ -1,0 +1,47 @@
+
+.button-yellow-type {
+	@include button(5px 10px, $yellow, $gray);
+	color: $text-color;
+	text-decoration: none;
+}
+
+.button-yellow-small {
+	@include button(17.5px 32px, $yellow, $gray);
+	@include font($size: 14px, $weight: 600);
+	color: $text-color;
+	text-decoration: none;
+}
+
+.button-yellow-mid {
+	@include button(17.5px 64px, $yellow, $gray);
+	@include font($size: 14px, $weight: 600);
+	color: $text-color;
+	text-decoration: none;
+}
+
+.button-yellow-big {
+	@include button(17.5px 96px, $yellow, $gray);
+	color: $text-color;
+	text-decoration: none;
+}
+
+.action-button {
+	@include button(17.5px 50px, $gray, $white);
+	@include font($size: 14px, $weight: 600);
+	text-decoration: none;
+}
+
+.action-button-2 {
+	@include button(17.5px 50px, $white, $text-color);
+	@include font($size: 14px, $weight: 600);
+	text-decoration: none;
+}
+
+.inactive {
+	pointer-events: none;
+}
+
+.link-block {
+	display: block;
+	width: max-content;
+}

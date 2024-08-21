@@ -1,0 +1,313 @@
+
+.site-header {
+	@include position(absolute, $top: 0, $left: 0, $z-index: 10);
+	width: 100%;
+	padding: 0 20px;
+	box-sizing: border-box;
+	background-color: $white;
+	border-bottom: 2px solid transparent;
+	transition: .2s;
+
+	&.moved {
+		border-bottom: 2px solid $light-gray;
+	}
+
+	& + * {
+		margin-top: 120px;
+	}
+
+	.header-content {
+		@include flex($gap: 36px, $align-items: center);
+		@include max-width($width: 100%, $max-width: 1220px);
+		height: 120px;
+		margin: 0 auto;
+		background-color: $white;
+
+		.main-menu-desktop {
+
+			@media screen and (max-width: 1024px) {
+				display: none;
+			}
+
+			#svitmov-main-menu {
+				@include flex($gap: 32px, $align-items: center);
+
+				a, span {
+					cursor: pointer;
+					color: $text-color;
+					text-decoration: none;
+				}
+
+				.menu-item {
+					@include font($size: 18px, $weight: 500);
+
+					&.dropdown-trigger {
+						@include box($padding: 16px 42px, $radius: 50px, $color: $yellow);
+						@include font($size: 14px, $weight: 500);
+
+						&::after {
+							@include position(relative, $left: 6px, $bottom: 1px);
+							content: $downward-caret;
+							display: inline-block;
+							line-height: 5px;
+							transition: .2s;
+						}
+					}
+
+					&.active {
+						&::after {
+							transform: rotate(180deg);
+						}
+					}
+				}
+
+				.main-menu-dropdown {
+					@include position(absolute, $top: 100%, $left: 0, $z-index: -1);
+					background-color: $white;
+					width: 100%;
+					padding: 0 20px;
+					box-shadow: 0 2000px 0 2000px #0000;
+					transform: translateY(-100%);
+					transition: box-shadow .2s ease-in-out, transform .3s ease-out .1s;
+					pointer-events: none;
+
+					&.active {
+						transform: translateY(0);
+						box-shadow: 0 2000px 0 2000px #3336;
+						pointer-events: all;
+					}
+
+					.menu-level-0 {
+						@include position(relative);
+						@include max-width($width: 100%, $max-width: 1220px);
+						margin: auto;
+						padding: 12px 0 36px;
+
+						& > .menu-item {
+							@include max-width($width: max-content, $max-width: 35%);
+							@include box($padding: 16px 42px, $radius: 50px);
+							@include font($size: 14px, $weight: 500);
+							display: block;
+							margin: 0 12px 22px 0;
+							box-shadow: inset 0 0 0 2px $yellow;
+							background-image: linear-gradient(110deg, $yellow 50%, transparent 50.1%);
+							background-size: 300%;
+							background-position: 100%;
+							transition: .5s;
+
+							&:hover, &.active {
+								background-position: 0;
+							}
+
+							svg {
+								@include position(relative, $left: 16px);
+							}
+						}
+
+						& > .sub-menu-wrap {
+							@include position(absolute, $top: 0, $left: 35%);
+							height: calc(100% - 60px);
+							padding: 16px 24px;
+							border-left: 1px solid $gray;
+							opacity: 0;
+							transition: .1s ease .1s;
+							pointer-events: none;
+
+							.sub-menu {
+								@include flex($gap: 32px, $direction: column);
+								transform: translateX(100px);
+								transition: .2s;
+							}
+
+							&.active {
+								opacity: 1;
+								transition: .1s ease;
+								pointer-events: all;
+
+								.sub-menu {
+									transform: translateX(0);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.main-menu-trigger {
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
+
+			&::after {
+				content: '\f349';
+				@include font($line-height: 1, $size: 24px, $font-family: 'dashicons');
+			}
+		}
+
+		.main-menu-mobile {
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
+
+			@include position(fixed, $bottom: 0, $left: 0, $z-index: 1000);
+			@include size(100%);
+			padding-top: var(--wp-admin--admin-bar--height, 0);
+			background-color: $white;
+			transform: translateX(-100%);
+			transition: .5s;
+
+			&.active {
+				transform: translateX(0);
+			}
+
+			.menu-controls {
+				@include flex($gap: 8px, $justify-content: space-between);
+				margin: 44px 20px 0;
+
+				.close-menu {
+					cursor: pointer;
+
+					&::before {
+						content: '\f340';
+						@include font($line-height: 1, $size: 24px, $font-family: 'dashicons');
+					}
+				}
+
+				.site-search {
+					@include position(relative, $top: -6px, $right: -50px);
+					left: unset;
+
+					&.active {
+						right: 0;
+					}
+				}
+			}
+
+			#svitmov-main-menu {
+				@include font($size: 22px, $weight: 500);
+				margin: 24px 0;
+				padding-left: 20px;
+
+				ul {
+					@include position(relative);
+					margin-bottom: 18px;
+				}
+
+				li {
+					margin: 10px 0;
+					list-style: none;
+				}
+
+				a {
+					text-decoration: none;
+					color: $text-color;
+				}
+
+				.menu-item-has-children {
+					@include position(relative);
+
+					&::after {
+						content: '\f347';
+						@include position(absolute, $top: 0, $right: 20px);
+						@include font($size: 22px, $font-family: 'dashicons');
+						transition: .2s;
+					}
+
+					& > .sub-menu {
+						display: none;
+					}
+
+					&.active {
+						&::after {
+							transform: rotate(180deg);
+						}
+
+						& > .sub-menu {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
+
+		.header-controls {
+			@include position(relative);
+			@include flex-centered($gap: 16px);
+			margin-left: auto;
+
+			@media screen and (max-width: 600px) {
+				display: none;
+			}
+
+			.contacts {
+				@include font($size: 18px, $weight: 600);
+				border-left: 2px solid $light-gray;
+				padding-left: 16px;
+			}
+		}
+
+		.site-search {
+			@include position(absolute, $left: -50px);
+			@include flex-centered($gap: 8px, $wrap: nowrap);
+			@include box($padding: 8px 40px 8px 10px, $radius: 50px, $color: transparent);
+			transition: .2s;
+
+			.search-toggle {
+				@include size(24px);
+				cursor: pointer;
+			}
+
+			.search-input {
+				@include font($size: 16px, $weight: 500);
+				color: transparent;
+				width: 0;
+				outline: none;
+				background-color: transparent;
+				border: none;
+				pointer-events: none;
+				transition: .5s, color .1s;
+			}
+
+			.search-submit {
+				@include position(absolute, $right: 8px);
+				@include flex-centered;
+				@include size(24px);
+				@include box($padding: 0, $radius: 24px, $color: $yellow);
+				opacity: 0;
+				pointer-events: none;
+				transform: rotate(-45deg);
+				transition: .2s ease-in-out;
+
+				svg {
+					width: 6px;
+					margin-left: 2px;
+				}
+
+				&.active {
+					opacity: 1;
+					pointer-events: all;
+					transform: rotate(0);
+					cursor: pointer;
+				}
+			}
+
+			&.active {
+				background-color: $gray;
+
+				.search-toggle {
+					path {
+						stroke: $white;
+					}
+				}
+
+				.search-input {
+					width: 140px;
+					color: $white;
+					pointer-events: all;
+				}
+			}
+		}
+	}
+}

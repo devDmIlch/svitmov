@@ -1,0 +1,136 @@
+
+.pop-up-target {
+	@include position(fixed, $top: 50%, $left: 50%, $z-index: 9999);
+	@include max-width($width: calc(100% - 40px), $max-width: 600px);
+	@include box($padding: 32px, $radius: 10px, $color: $white);
+	max-height: calc(100% - 40px);
+	box-shadow: 0 0 0 2000px #3336;
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+	overflow: hidden;
+
+	&.large {
+		@include size(80%);
+		max-width: unset;
+		max-height: unset;
+	}
+
+	&.active {
+		visibility: visible;
+	}
+
+	&.pop-up-form {
+		.form-content {
+			@include flex-centered($direction: column, $gap: 24px, $wrap: nowrap);
+			max-height: calc(100% - 40px);
+
+			&.hidden {
+				display: none;
+			}
+		}
+
+		.form-title {
+			margin: 0;
+			text-align: center;
+		}
+
+		.test-question {
+			@include position(absolute, $right: 100vw);
+			transform: scale(0.01);
+		}
+
+		.field-wrap {
+			@include position(relative);
+			width: 100%;
+
+			.field-error {
+				@include position(absolute, $right: 24px, $bottom: 100%);
+				@include font($size: 12px, $weight: 500);
+				color: $red;
+			}
+		}
+
+		.form-field {
+			@include box($padding: 16px 32px, $radius: 50px);
+			@include font($size: 14px, $weight: 600);
+			width: 100%;
+			box-sizing: border-box;
+			border: 1px solid $gray;
+
+			&.invalid {
+				border-color: $red;
+			}
+		}
+
+		textarea {
+			min-height: 150px;
+			@include box($padding: 16px 32px, $radius: 30px);
+			@include font($line-height: 1.4 !important, $size: 14px, $weight: 600);
+			@include fancy-scroll;
+			width: 100%;
+			box-sizing: border-box;
+			border: 1px solid $gray;
+			resize: none;
+
+			&.invalid {
+				border-color: $red;
+			}
+
+			&::-webkit-scrollbar-track {
+				margin: 30px 0;
+			}
+		}
+
+		button {
+			@include min-width($min-width: 250px, $width: max-content);
+			@include box($padding: 18px, $radius: 50px, $color: $yellow);
+			@include font($size: 14px, $weight: 600);
+			margin: auto;
+			border: none;
+			text-align: center;
+			cursor: pointer;
+
+			&:hover {
+				filter: brightness(.95);
+			}
+
+			&.disabled {
+				opacity: .5;
+				pointer-events: none;
+			}
+		}
+
+		.submit-error {
+			@include font($size: 16px, $weight: 500);
+			color: $red;
+
+			&.hidden {
+				display: none;
+			}
+		}
+
+		.success-message {
+			@include flex-centered;
+			@include font($size: 24px, $weight: 600);
+			text-align: center;
+
+			&.hidden {
+				display: none;
+			}
+		}
+
+		.pop-up-close {
+			@include font($size: 14px, $weight: 600);
+			display: block;
+			width: max-content;
+			margin: 24px auto 0;
+			text-transform: uppercase;
+			cursor: pointer;
+		}
+	}
+
+	.gallery-image {
+		@include size(100%);
+		object-fit: contain;
+	}
+}

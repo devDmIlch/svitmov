@@ -1,0 +1,59 @@
+
+.section-teacher {
+	@include flex($wrap: nowrap);
+
+	.photo-wrap {
+		@include size($width: 275px, $height: 405px);
+		min-width: 275px;
+
+		img {
+			@include size(100%);
+			object-fit: cover;
+			border-radius: 30px;
+		}
+	}
+
+	.description {
+		flex: 1 0 360px;
+		padding: 40px 0;
+
+		.greeting {
+			@include font($size: 24px, $weight: 600);
+		}
+
+		.teacher-name {
+			margin: 10px 0 36px;
+
+			&::before {
+				content: 'I\'m ';
+				font-weight: 500;
+			}
+		}
+
+		.teacher-bio {
+			h2 {
+				@include font($size: 18px, $weight: 500);
+			}
+
+			p {
+				@include font($line-height: 1.6, $size: 14px, $weight: 500);
+			}
+		}
+	}
+
+	.certificates-slider {
+		max-width: 420px;
+		border-left: 1px solid $gray;
+		padding-left: 80px;
+
+		.certificate-wrap {
+			@include flex-centered;
+			aspect-ratio: 1 / 1;
+
+			.certificate {
+				width: 100%;
+				object-position: center;
+			}
+		}
+	}
+}

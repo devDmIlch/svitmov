@@ -1,0 +1,144 @@
+
+.section-side-by-side {
+
+	.section-title {
+		margin: 0;
+	}
+
+	.section-inside {
+		@include flex($gap: 40px, $wrap: nowrap, $align-items: center);
+
+		.text, .graphics {
+			flex: 0 0 calc(50% - 20px);
+		}
+
+		.section-name {
+			margin-top: 0;
+		}
+
+		p {
+			@include font($size: 24px);
+		}
+
+		img {
+			width: 100%;
+		}
+
+		&.reverse {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&.alt {
+		margin-bottom: 0;
+
+		.section-title {
+			margin-bottom: 20px;
+		}
+
+		.section-inside {
+
+			.section-name {
+				@include font($size: 28px, $weight: 600);
+			}
+
+			p {
+				@include font($line-height: 1.6 !important, $size: 18px);
+			}
+
+			.text {
+				border-bottom: 2px solid $gray;
+			}
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
+		&.alt {
+			.section-inside {
+				margin-bottom: 100px;
+
+				.text {
+					@include position(relative, $z-index: 1);
+					flex: 0 1 100%;
+					border: none;
+				}
+
+				.graphics {
+					@include position(absolute, $right: 0, $z-index: 0);
+					width: 50%;
+					opacity: .1;
+				}
+
+				p {
+					@include font($size: 16px);
+				}
+
+				&.reverse {
+					.graphics {
+						right: unset;
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		.section-inside {
+			p {
+				@include font($size: 18px);
+			}
+		}
+
+		&.alt {
+			.section-title {
+				margin-bottom: 40px;
+			}
+
+			.section-inside {
+				margin-bottom: 50px;
+
+				.section-name {
+					font-size: 22px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		margin-bottom: 70px;
+
+		.section-inside {
+			.text {
+				@include position(relative, $z-index: 1);
+				flex: 0 1 100%;
+			}
+
+			.graphics {
+				@include position(absolute, $right: 0, $z-index: 0);
+				width: 50%;
+				opacity: .2;
+			}
+
+			p {
+				@include font($size: 16px);
+			}
+
+			&.reverse {
+				.graphics {
+					right: unset;
+					left: 0;
+				}
+			}
+		}
+	}
+}
+
+.gray-bg {
+	@include position(relative, $left: 50%);
+	width: 100vw;
+	margin-bottom: 100px;
+	padding: 54px 20px;
+	background-color: $light-gray;
+	transform: translateX(-50%);
+}

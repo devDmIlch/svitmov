@@ -1,0 +1,225 @@
+
+.section-title-archive {
+	margin-bottom: 50px;
+
+	.page-title {
+		@include font($size: 22px, $weight: 600);
+		color: $gray;
+		margin: 0;
+		padding-bottom: 20px;
+		border-bottom: 2px solid $light-gray;
+
+		b {
+			font-weight: 600;
+			color: $text-color;
+		}
+	}
+
+	.fail-message {
+		@include font($size: 48px, $weight: 600);
+		margin: 20px 0;
+	}
+
+	.fail-suggestion {
+		@include font($size: 14px, $weight: 600);
+		text-transform: uppercase;
+		color: $gray;
+	}
+}
+
+.section-archive {
+	@include flex($wrap: nowrap);
+
+	&.simplified {
+		flex-direction: column;
+	}
+
+	.archive-filters {
+		@include max-width(276px, 100vw);
+
+		.single-filter {
+			@include position(relative);
+			@include box($padding: 22px 16px, $radius: 10px, $outline: 1px solid $gray);
+			margin-bottom: 28px;
+
+			.filter-title {
+				@include font($size: 14px, $weight: 600);
+				margin: 0 0 16px;
+			}
+
+			.options-list {
+				@include fancy-scroll;
+				max-height: 200px;
+				overflow: auto;
+
+				.single-option {
+					@include flex($gap: 8px, $align-items: center);
+					@include font($size: 14px, $weight: 500);
+					margin: 16px 0 0;
+					cursor: pointer;
+
+
+					&::before {
+						content: '';
+						display: inline-block;
+						@include size(16px);
+						@include box($padding: 0, $radius: 50%, $color: $yellow);
+						box-shadow: inset 0 0 0 10px $light-gray;
+						transition: .2s;
+					}
+
+					&:first-child {
+						margin: 0;
+					}
+
+					&.selected {
+
+						&::before {
+							box-shadow: inset 0 0 0 4px $light-gray;
+						}
+					}
+				}
+			}
+		}
+
+		.range-values {
+			@include flex($gap: 8px, $justify-content: space-between);
+			@include font($size: 14px, $weight: 600);
+		}
+
+		.range-bar {
+			@include position(relative);
+			@include box($padding: 1px 0, $radius: 1px, $color: $light-gray);
+			margin: 12px 8px 0;
+
+			.handle {
+				@include size(16px);
+				@include box($padding: 0, $radius: 50%, $color: $gray);
+				transition: filter .2s;
+				cursor: pointer;
+
+				&:hover {
+					filter: brightness(0.8);
+				}
+			}
+
+			.min-handle {
+				@include position(absolute, $top: -7px, $left: 0);
+				transform: translateX(-50%);
+			}
+
+			.max-handle {
+				@include position(absolute, $top: -7px, $right: 0);
+				transform: translateX(50%);
+			}
+		}
+
+		.notation {
+			@include font($size: 14px);
+			margin-top: 20px;
+			color: $gray;
+		}
+
+		.apply-filter {
+			@include box($padding: 2px 12px, $radius: 30px, $color: $yellow);
+			@include position(absolute, $top: 20px, $right: 16px);
+			@include font($size: 14px, $weight: 500);
+			opacity: 1;
+			transition: opacity .1s;
+			cursor: pointer;
+
+			&.hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.archive-main {
+		flex: 1 0 0;
+
+		.archive-content {
+			@include flex;
+			margin-bottom: 40px;
+		}
+
+		.archive-head {
+			@include flex($gap: 24px, $justify-content: space-between, $align-items: baseline);
+			margin-bottom: 40px;
+			padding-bottom: 24px;
+			border-bottom: 1px solid $gray;
+
+			.page-name {
+				margin: 0;
+				@include font($line-height: 27px, $size: 22px, $weight: 500);
+			}
+
+			.total-entries {
+				@include font($line-height: 27px, $size: 18px, $weight: 500);
+			}
+		}
+
+		.archive-load-more {
+			@include position(relative, $top: 0);
+			padding: 10px 0;
+			text-align: center;
+			transition: .1s;
+
+			.load-more {
+				@include font($size: 14px, $weight: 600);
+				cursor: pointer;
+
+				svg {
+					@include position(absolute);
+					margin-left: 8px;
+				}
+			}
+
+			&.hidden {
+				top: 20px;
+				opacity: 0;
+			}
+		}
+
+		.archive-pagination {
+			.pagination {
+				@include flex($gap: 28px, $align-items: center, $justify-content: center);
+
+				.pag-item {
+					@include font($line-height: 1, $size: 18px, $weight: 500);
+					cursor: pointer;
+
+					&.current {
+						font-weight: 600;
+						text-decoration: underline;
+						color: $yellow;
+					}
+				}
+
+				.page-prev, .page-next {
+					cursor: pointer;
+				}
+			}
+
+			&.hidden {
+				display: none;
+			}
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		.archive-filters {
+			@include position(absolute, $left: 0);
+			transform: translateX(-100%);
+			transition: .2s;
+		}
+
+		.archive-main {
+			.archive-content {
+				.single-el {
+					flex: 1 0 320px;
+				}
+			}
+		}
+	}
+}

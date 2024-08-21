@@ -1,0 +1,52 @@
+
+.teacher-card {
+	@include flex($gap: 0, $direction: column, $wrap: nowrap);
+	@include box($padding: 0, $radius: 30px);
+	overflow: hidden;
+
+	.thumbnail-wrap {
+		height: 292px;
+		background-color: $light-gray;
+		overflow: hidden;
+
+		.thumbnail {
+			@include size(100%);
+			object-fit: cover;
+			object-position: top;
+		}
+	}
+
+	.info-block {
+		@include position(relative);
+		flex: 1 0 0;
+		padding: 22px 16px 32px;
+		background-color: $gray;
+
+		.name {
+			margin: 0 0 4px;
+
+			a {
+				text-decoration: none;
+				color: $white;
+			}
+		}
+
+		.bio {
+			@include font($size: 14px);
+			margin: 0;
+			color: $white;
+		}
+
+		.lang-list {
+			@include position(absolute, $bottom: 100%, $right: 0);
+			@include font($size: 14px, $weight: 600, $line-height: 2);
+			padding: 4px 20px;
+			background-color: $yellow;
+
+			.lang {
+				display: block;
+				text-align: right;
+			}
+		}
+	}
+}

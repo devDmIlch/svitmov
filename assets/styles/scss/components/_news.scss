@@ -1,0 +1,85 @@
+
+.news-card {
+	@include flex($gap: 0, $direction: column, $wrap: nowrap);
+	@include box($padding: 0, $radius: 30px);
+	overflow: hidden;
+	transition: .2s;
+
+	&.archive-el {
+		flex: 0 1 275px;
+	}
+
+	&.unloaded {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	&.animated {
+		@include scroll-up;
+	}
+
+	.thumbnail-wrap {
+		height: 180px;
+		background-color: $gray;
+		overflow: hidden;
+
+		.thumbnail {
+			@include size(100%);
+			object-fit: cover;
+			object-position: top;
+		}
+	}
+
+	.info-block {
+		@include position(relative);
+		flex: 1 0 0;
+		padding: 12px 24px 48px;
+		background-color: $light-gray;
+
+		.tags {
+			margin: 12px 0;
+			@include font($size: 12px, $weight: 600);
+			color: $gray
+		}
+
+		.name {
+			margin: 0 0 16px;
+
+			a {
+				text-decoration: none;
+				color: $text-color;
+			}
+		}
+
+		.desc {
+			@include font($size: 14px);
+			margin: 0;
+		}
+	}
+
+	&.dark {
+		.thumbnail-wrap {
+			background-color: $light-gray;
+		}
+
+		.info-block {
+			background-color: $gray;
+
+			.tags {
+				color: $white;
+				font-weight: 400;
+			}
+
+			.name {
+				a {
+					text-decoration: none;
+					color: $white;
+				}
+			}
+
+			.desc {
+				color: $white;
+			}
+		}
+	}
+}

@@ -1,0 +1,140 @@
+
+// Positioning.
+
+@mixin position($position, $top: unset, $right: unset, $bottom: unset, $left: unset, $z-index: unset) {
+	position: $position;
+
+	@if ($top != unset) {
+		top: $top;
+	}
+
+	@if ($right != unset) {
+		right: $right;
+	}
+
+	@if ($bottom != unset) {
+		bottom: $bottom;
+	}
+
+	@if ($left != unset) {
+		left: $left;
+	}
+
+	@if ($z-index != unset) {
+		z-index: $z-index;
+	}
+}
+
+
+// Layout.
+
+@mixin flex($direction: row, $gap: 40px, $wrap: wrap, $justify-content: unset, $align-items: unset) {
+	display: flex;
+	flex-direction: $direction;
+	gap: $gap;
+	flex-wrap: $wrap;
+
+	@if ($justify-content != unset) {
+		justify-content: $justify-content;
+	}
+
+	@if ($align-items != unset) {
+		align-items: $align-items;
+	}
+}
+
+@mixin flex-centered($direction: row, $gap: 40px, $wrap: wrap) {
+	@include flex($direction, $gap, $wrap, center, center);
+}
+
+
+// Sizing.
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin max-width($width, $max-width) {
+	max-width: $max-width;
+	width: $width;
+}
+
+@mixin min-width($min-width, $width) {
+	width: $width;
+	min-width: $min-width;
+}
+
+@mixin width($min-width, $width, $max-width) {
+	max-width: $max-width;
+	width: $width;
+	min-width: $min-width;
+}
+
+
+// Elements.
+
+@mixin box($padding, $radius, $color: unset, $outline: unset) {
+	padding: $padding;
+	border-radius: $radius;
+
+	@if ($color != unset) {
+		background-color: $color;
+	}
+
+	@if ($outline != unset) {
+		border: $outline;
+	}
+}
+
+@mixin button($padding, $color, $text-color) {
+	@include box($padding: $padding, $color: $color, $radius: 500px);
+
+	color: $text-color;
+}
+
+@mixin input($background-color, $text-color, $outline: unset) {
+	@include box($padding: 19px 34px, $radius: 50px, $color: $background-color, $outline: $outline);
+
+	color: $text-color;
+}
+
+
+// Typography.
+
+@mixin font($size, $weight: 400, $font-family: $font-family, $line-height: 1.4, $text-align: left) {
+	line-height: $line-height;
+	font: $weight $size $font-family;
+	text-align: $text-align;
+}
+
+
+// Scrollbars.
+
+@mixin fancy-scroll {
+	&::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: #bbb;
+		border-radius: 50px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #777;
+		border-radius: 50px;
+		transition: background-color .2s;
+
+		&:hover {
+			background-color: $gray;
+		}
+	}
+}
+
+
+// Animations.
+
+@mixin scroll-up {
+	animation: scroll-up .2s;
+}

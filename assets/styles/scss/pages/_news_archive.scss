@@ -1,0 +1,57 @@
+
+.section-archive {
+	.top-links {
+		@include flex($gap: 32px);
+		border-top: 2px solid $light-gray;
+
+		.single-link {
+			display: flex;
+			margin-top: -2px;
+			padding: 12px 8px;
+			border-top: 2px solid transparent;
+			@include font($size: 26px, $weight: 600);
+			color: $gray;
+			text-decoration: none;
+			opacity: 0.5;
+
+			&.current {
+				border-top: 2px solid $gray;
+				color: $text-color;
+				opacity: 1;
+			}
+
+			&:first-child {
+				padding-left: 0;
+			}
+		}
+	}
+
+	.latest-post {
+		padding-bottom: 40px;
+		margin-bottom: 40px;
+		border-bottom: 2px solid $light-gray;
+
+		animation: border-fade .2s linear .2s;
+		animation-fill-mode: both;
+		@keyframes border-fade {
+			0% {
+				border-bottom: 2px solid transparent;
+			}
+			100% {
+				border-bottom: 2px solid $light-gray;
+			}
+		}
+	}
+
+	.subsection {
+		@include flex($wrap: nowrap);
+
+		.featured-sidebar {
+			flex: 0 0 275px;
+
+			.news-card {
+				margin-bottom: 40px;
+			}
+		}
+	}
+}

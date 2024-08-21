@@ -1,0 +1,129 @@
+
+footer {
+	width: calc(100% + 40px);
+	margin: 0 -20px -120px;
+
+	.newsletter {
+		padding: 20px;
+		background-color: $yellow;
+
+		.newsletter-content {
+			@include flex($gap: 12px, $wrap: nowrap, $justify-content: space-between, $align-items: center);
+			@include max-width($width: 100%, $max-width: 1220px);
+			margin: 0 auto;
+
+			.text {
+				flex: 3 0 0;
+				@include font($size: 18px, $weight: 600);
+			}
+
+			input {
+				@include box($padding: 0 32px, $radius: 50px, $outline: none);
+				@include font($size: 14px, $weight: 600);
+				flex: 5 0 0;
+				border: none;
+
+				&::placeholder {
+					color: $gray;
+				}
+			}
+
+			button {
+				@include box($padding: 0, $radius: 50px, $color: $gray, $outline: none);
+				@include font($size: 14px, $weight: 600);
+				flex: 2 0 0;
+				color: $white;
+				text-align: center;
+			}
+
+			.social-link {
+				line-height: 24px;
+				text-decoration: none;
+				color: $text-color;
+
+				&::before {
+					@include font($size: 36px, $font-family: 'dashicons');
+				}
+
+				&.svitmov-social-ig {
+					&::before {
+						content: '\f19b';
+					}
+				}
+
+				&.svitmov-social-yt {
+					&::before {
+						content: '\f12d';
+					}
+				}
+
+				&.svitmov-social-fb {
+					&::before {
+						content: '\f304';
+					}
+				}
+
+				&.svitmov-social-vb {
+					&::before {
+						content: '\f304';
+					}
+				}
+
+				&.svitmov-social-tg {
+					&::before {
+						content: '\f12d';
+					}
+				}
+			}
+		}
+	}
+
+	.footer-main {
+		padding: 20px;
+		background-color: $light-gray;
+
+		.footer-main-content {
+			@include max-width($width: 100%, $max-width: 1220px);
+			margin: 0 auto;
+
+			.site-identity {
+				margin-bottom: 40px;
+			}
+
+			.widgets {
+				@include flex($gap: 40px);
+
+				.widget-column {
+					flex: 1 0 280px;
+					max-width: calc(50% - 40px);
+
+					p {
+						margin: 0;
+						line-height: 2;
+
+						&:last-child {
+							margin-bottom: 40px;
+						}
+					}
+				}
+			}
+
+			.copyright {
+				@include flex($wrap: nowrap);
+				@include font($size: 16px);
+				padding-top: 20px;
+				border-top: 1px solid $gray;
+
+				.message-dev {
+					margin-left: auto;
+					color: $text-color;
+					text-decoration: none;
+
+					b {
+						font-weight: 500;
+					}
+				}
+			}
+		}
+	}
+}

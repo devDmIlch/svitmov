@@ -1,0 +1,134 @@
+
+.card-course {
+	@include position(relative, $top: 0);
+	@include flex($direction: column, $gap: 0, $wrap: nowrap);
+	@include box($padding: 22px 28px, $radius: 10px, $color: $moss);
+	flex: 0 1 380px;
+	transition: .2s;
+
+	.course-type {
+		@include font($line-height: 1, $size: 14px, $weight: 600);
+		margin: 0;
+		padding: 15px 5px;
+
+		&::before {
+			content: '';
+			@include size(14px);
+			display: inline-block;
+			margin: 2px 4px 0 0;
+		}
+
+		&[type="in-person"]::before {
+			@include box($padding: 0, $radius: 50%, $color: $yellow);
+		}
+
+		&[type="online"]::before {
+			@include box($padding: 0, $radius: 50%, $color: $green);
+		}
+
+		&[type="mixed"]::before {
+			@include box($padding: 0, $radius: 50%, $color: $navy);
+		}
+	}
+
+	p {
+		@include flex($gap: 8px);
+		margin: 8px 0;
+	}
+
+	.card-body {
+		margin-bottom: auto;
+
+		.card-title {
+			@include font($size: 18px, $weight: 600);
+			margin: 14px 0;
+		}
+
+		.lang-levels {
+			margin-bottom: 24px;
+		}
+
+		.lang-levels, .detail-name {
+			@include font($size: 14px, $weight: 600);
+		}
+
+		.detail-value {
+			@include font($size: 14px, $weight: 500);
+			margin-left: auto;
+			text-align: right;
+
+			&:not(:nth-child(2)) {
+				flex: 0 0 100%;
+			}
+		}
+	}
+
+	.card-bottom {
+		.separator {
+			@include size($width: 100%, $height: 2px);
+			margin: auto 0 24px;
+			background-color: $gray;
+		}
+
+		.price-list {
+			@include flex($gap: 8px);
+
+			.price-cat {
+				flex: 0 0 calc(33.3% - 6px);
+			}
+
+			.price-cat-name {
+				@include font($size: 14px, $weight: 500);
+				margin: 0 0 14px;
+				color: $gray;
+
+			}
+
+			.price-val {
+				@include font($size: 18px, $weight: 600);
+				margin: 0;
+			}
+		}
+
+		.is-active {
+			@include font($size: 14px, $weight: 600);
+			margin: 34px 0 24px;
+			text-align: center;
+
+			&[active="1"] {
+				color: $green;
+			}
+
+			&[active="0"] {
+				color: $red;
+			}
+		}
+
+		.action-buttons {
+			@include flex($gap: 24px);
+
+			a {
+				padding: 15.5px 0;
+				display: inline-block;
+				flex: 0 0 calc(50% - 12px);
+				text-align: center;
+				text-decoration: none;
+				box-sizing: border-box;
+				cursor: pointer;
+			}
+
+			.button-yellow-small {
+				color: $text-color;
+			}
+
+			.inactive {
+				opacity: .5;
+			}
+		}
+	}
+
+	&.unloaded {
+		top: 200px;
+		opacity: 0;
+	}
+}

@@ -1,0 +1,26 @@
+
+body {
+	@include position(relative);
+	margin: 0;
+	padding: 20px;
+	overflow-x: hidden;
+}
+
+section {
+	@include max-width(100%, 1220px);
+	margin: 0 auto 100px;
+
+	.sidelink {
+		@include position(absolute, $top: 32px, $right: 0);
+		@include font($size: 16px, $weight: 600);
+		color: $gray;
+		text-decoration: none;
+		cursor: pointer;
+
+		@media screen and (max-width: 800px) {
+			display: block;
+			@include position(relative, $top: -12px);
+			margin-bottom: 12px;
+		}
+	}
+}

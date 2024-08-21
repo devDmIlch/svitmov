@@ -1,0 +1,42 @@
+
+.section-intro-3 {
+	.post-title {
+		margin: 12px 0;
+	}
+
+	.post-tags {
+		@include font($size: 17px, $weight: 600);
+		color: $gray;
+	}
+
+	.post-thumbnail {
+		margin: 40px 0;
+
+		img {
+			width: 100%;
+			max-height: 500px;
+			object-fit: cover;
+			object-position: top;
+			border-radius: 30px;
+		}
+	}
+}
+
+.section-content {
+	max-width: 900px;
+	font-family: $font-family;
+
+	.post-tags {
+		margin: 40px 0;
+		padding: 14px 32px;
+		@include font($size: 17px, $weight: 600);
+		color: $gray;
+		border-top: 1px solid $gray;
+		border-bottom: 1px solid $gray;
+
+		.tag-text {
+			margin-right: 18px;
+			color: $text-color;
+		}
+	}
+}

@@ -1,0 +1,156 @@
+
+.pop-up-form {
+	.svitmov-form {
+		width: 100%;
+	}
+}
+
+.svitmov-form {
+	@include flex($direction: column, $gap: 24px, $wrap: nowrap);
+
+	.subtype-switch {
+		margin-bottom: 8px;
+
+		.type-switch {
+			@include font($size: 14px, $weight: 600);
+			padding: 4px 0;
+			margin-right: 16px;
+			color: $gray;
+			border-bottom: 2px solid transparent;
+			cursor: pointer;
+
+			&:last-child {
+				margin: 0;
+			}
+
+			&.active {
+				border-color: $yellow;
+				color: $text-color;
+			}
+		}
+	}
+
+	.test-question {
+		@include position(absolute, $right: 100vw);
+		transform: scale(0.01);
+	}
+
+	.field-wrap {
+		@include position(relative);
+
+		.field-error {
+			@include position(absolute, $right: 32px, $bottom: 100%);
+			@include font($size: 12px, $weight: 500);
+			color: $red;
+		}
+
+		&.disabled {
+			display: none;
+		}
+	}
+
+	input, select, .pseudo-select {
+		@include size($width: 100%, $height: 50px);
+		@include box($padding: 0 32px, $radius: 30px, $color: #fff);
+		@include font($size: 14px, $weight: 600);
+		border: 1px solid $light-gray;
+		box-sizing: border-box;
+
+		&[disabled] {
+			background-color: #fff;
+			cursor: pointer;
+		}
+
+		&.invalid, &.invalid + .pseudo-select {
+			border-color: $red;
+		}
+
+		&::placeholder {
+			color: $text-color;
+		}
+	}
+
+	textarea {
+		width: 100%;
+		min-height: 300px;
+		@include box($padding: 16px 32px, $radius: 30px);
+		@include font($line-height: 1.4 !important, $size: 14px, $weight: 600);
+		@include fancy-scroll;
+		border: 1px solid $light-gray;
+		box-sizing: border-box;
+		resize: none;
+
+		&.invalid {
+			border-color: $red;
+		}
+
+		&::-webkit-scrollbar-track {
+			margin: 30px 0;
+		}
+	}
+
+	.pseudo-select {
+		@include position(relative);
+		padding: 15px 30px;
+		height: unset;
+		min-height: 50px;
+		line-height: 1.4;
+		cursor: pointer;
+
+		&::after {
+			@include position(absolute, $right: 32px);
+			@include font($line-height: 24px !important, $size: 24px);
+			content: '\2039';
+			transform: rotate(-90deg);
+			transition: .2s;
+		}
+	}
+
+	.pseudo-select-dropdown {
+		@include position(absolute, $z-index: 10);
+		@include flex($direction: column, $gap: 8px);
+		@include box($padding: 16px, $radius: 10px, $color: #fff, $outline: 2px solid $lighter-gray);
+		@include font($size: 14px, $weight: 600);
+		width: 100%;
+		opacity: 0;
+		transform: translateY(0px);
+		transition: .2s;
+		pointer-events: none;
+		cursor: pointer;
+
+		&.active {
+			opacity: 1;
+			transform: translateY(20px);
+			pointer-events: all;
+		}
+
+		.option {
+			padding: 8px 16px;
+			border-radius: 10px;
+			transition: .1s;
+
+			&:hover {
+				background-color: $lighter-gray;
+			}
+		}
+	}
+
+	.submit-error {
+		@include font($size: 16px, $weight: 500);
+		color: $red;
+
+		&.hidden {
+			display: none;
+		}
+	}
+
+	.submit-review {
+		width: max-content;
+		border: none;
+		cursor: pointer;
+
+		&:hover {
+			filter: brightness(.97);
+		}
+	}
+}

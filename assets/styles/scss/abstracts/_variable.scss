@@ -1,0 +1,52 @@
+
+// Main Colors.
+
+$black: #333;
+$gray: #666;
+$light-gray: #ECECEC;
+$lighter-gray: #F4F5F7;
+$white: #fff;
+
+
+// Additional Colors.
+
+$yellow: #F8DA0D;
+$green: #058E6E;
+$red: #DB4446;
+$blue: #3366ff;
+$navy: #421EB7;
+$purple: #D0CFFF;
+$moss: #CDDFC7;
+$mint: #D1FFF8;
+$salmon: #F8B09D;
+
+
+// Text Colors.
+
+$text-color: $black;
+$text-color-alt: $gray;
+$text-color-white: $white;
+
+
+// Text properties.
+
+$font-family: Montserrat, sans-serif;
+
+
+// Keyframes.
+
+@keyframes scroll-up {
+	0% {
+		opacity: 0;
+		transform: translateY(200px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+// Content.
+
+$downward-caret: url("data:image/svg+xml; utf8, <svg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1.0625 1.03125L5 4.96875L8.9375 1.03125' stroke='currentColor' stroke-miterlimit='10' stroke-linecap='square'/></svg>");

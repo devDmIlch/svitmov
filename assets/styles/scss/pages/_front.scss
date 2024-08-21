@@ -1,0 +1,94 @@
+
+.section-quick-links {
+	position: relative;
+
+	.link-list {
+		@include flex($gap: 40px);
+
+		.quick-link {
+			@include box($padding: 28px 20px, $radius: 30px);
+			@include font($size: 22px, $weight: 700);
+			display: block;
+			flex: 1 0 200px;
+			height: 176px;
+			color: $white;
+			text-decoration: none;
+			background-size: cover;
+			background-position: center;
+			overflow: hidden;
+
+			.foreground {
+				display: block;
+				box-shadow: 0 0 0 1000px #0086, inset 0 0 0 200px #0086;
+				transition: .2s;
+			}
+
+			&:hover {
+				.foreground {
+					box-shadow: 0 0 0 1000px #0083, inset 0 0 0 200px #0083;
+				}
+			}
+		}
+	}
+	
+	@media screen and (max-width: 800px) {
+		.link-list {
+			gap: 20px;
+
+			.quick-link {
+				@include box($padding: 14px, $radius: 20px);
+				@include font($size: 18px, $weight: 600);
+				flex: 1 0 150px;
+				height: 120px;
+			}
+		}
+	}
+}
+
+.section-booking {
+	.section-inside {
+		@include flex($gap: 40px, $wrap: nowrap);
+		@include box($padding: 40px, $radius: 30px, $color: $light-gray);
+
+		.form-wrap, .graphics-wrap {
+			flex: 0 1 calc(50% - 20px);
+
+			svg {
+				@include size($width: auto, $height: 100%);
+			}
+		}
+
+		.success-message {
+			@include flex-centered;
+			@include font($size: 24px, $weight: 600);
+			text-align: center;
+
+			&.hidden {
+				display: none;
+			}
+		}
+
+		@media screen and (max-width: 1200px) {
+			.form-wrap {
+				flex: 0 1 calc(75% - 20px);
+			}
+
+			.graphics-wrap {
+				flex: 0 1 calc(25% - 20px);
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			.form-wrap {
+				@include position(relative, $z-index: 1);
+				flex: 0 1 100%;
+			}
+
+			.graphics-wrap {
+				@include position(absolute, $z-index: 0);
+				transform: translateX(50%);
+				opacity: .8;
+			}
+		}
+	}
+}

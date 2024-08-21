@@ -1,0 +1,37 @@
+@import
+	'abstracts/_variable',
+	'abstracts/_mixin';
+
+@import
+	'base/_typography',
+	'base/_elements';
+
+@import
+	'components/_breadcrumbs',
+	'components/_buttons',
+	'components/_courses',
+	'components/_forms',
+	'components/_news',
+	'components/_pop_ups',
+	'components/_reviews',
+	'components/_slider',
+	'components/_teachers';
+
+@import
+	'layout/_header',
+	'layout/_body',
+	'layout/_footer';
+
+@import
+	'pages/_about',
+	'pages/_contact',
+	'pages/_course',
+	'pages/_course_archive',
+	'pages/_front',
+	'pages/_news',
+	'pages/_news_archive',
+	'pages/_teacher',
+	'pages/_teacher_archive',
+	'pages/_tests';
+
+@import '~@splidejs/splide/dist/css/splide-core.min.css';

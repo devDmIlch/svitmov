@@ -1,0 +1,18 @@
+
+.breadcrumbs {
+	@include flex($gap: 8px);
+	@include max-width($width: 100%, $max-width: 1220px);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+
+	.breadcrumb-item {
+		@include font($size: 16px, $weight: 500);
+		color: $text-color;
+		text-decoration: none;
+	}
+
+	.direction-arrow:last-child {
+		display: none;
+	}
+}

@@ -1,0 +1,57 @@
+
+.section-contact-details {
+	@include flex($gap: 40px, $wrap: nowrap);
+	margin-bottom: 0;
+
+	.contact-details {
+
+		h1 {
+			margin: 0 0 24px;
+		}
+
+		h2 {
+			@include font($size: 28px, $weight: 500);
+			margin: 0 0 20px;
+		}
+
+		p {
+			margin: 0 0 24px;
+			@include font($line-height: 2 !important, $size: 18px, $weight: 500);
+			color: $gray;
+		}
+	}
+
+	.schedule {
+		@include max-width($width: 100%, $max-width: 380px);
+		margin-left: auto;
+
+		.schedule-title {
+			@include font($size: 24px, $weight: 500);
+		}
+
+		.working-hour-list {
+			@include box($padding: 30px 10px 10px, $radius: 10px, $color: $light-gray);
+
+			.schedule-day {
+				@include flex($gap: 8px, $justify-content: space-between);
+				margin: 0 0 20px;
+
+				.day-name {
+					@include font($size: 18px, $weight: 500);
+					color: $gray;
+				}
+
+				.working-hours {
+					@include font($size: 18px, $weight: 600);
+				}
+			}
+		}
+	}
+}
+
+.section-map {
+	iframe {
+		width: 100%;
+		border-radius: 30px;
+	}
+}

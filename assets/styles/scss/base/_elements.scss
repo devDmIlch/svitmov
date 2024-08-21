@@ -1,0 +1,8 @@
+
+div {
+	box-sizing: border-box;
+}
+
+.gray-box {
+	@include box($padding: 32px, $radius: 30px, $color: $light-gray);
+}
