@@ -22,7 +22,9 @@ if ( empty( $args ) ) {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <?php // phpcs:ignore ?>
 	<style>
-		body {
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+		.email-body {
 			max-width: 600px;
 			margin: auto;
 			padding: 48px 20px;
@@ -46,13 +48,13 @@ if ( empty( $args ) ) {
 		h1 {
 			font-size: 24px;
 			font-weight: 600;
-			font-family: 'Montserrat', serif;
+			font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		}
 
 		p {
 			font-size: 14px;
 			font-weight: 500;
-			font-family: 'Montserrat', serif;
+			font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		}
 
 		a {
@@ -62,20 +64,22 @@ if ( empty( $args ) ) {
 		.copyright {
 			margin-left: 30px;
 			font-size: 12px;
-			font-family: 'Montserrat', serif;
+			font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		}
 	</style>
 </head>
 <body>
-	<div class="svitmov-logo">
-		<?php the_custom_logo(); ?>
-	</div>
-	<div class="email-content">
-		<?php get_template_part( 'template-parts/emails/email', $args['type'] ?? null, $args ?? [] ); ?>
-	</div>
-	<div class="copyright">
-		<a href="<?php echo esc_url( get_site_url() ); ?>">Svitmov</a>
-		2024
+	<div class="email-body">
+		<div class="svitmov-logo">
+			<?php the_custom_logo(); ?>
+		</div>
+		<div class="email-content">
+			<?php get_template_part( 'template-parts/emails/email', $args['type'] ?? null, $args ?? [] ); ?>
+		</div>
+		<div class="copyright">
+			<a href="<?php echo esc_url( get_site_url() ); ?>">Svitmov</a>
+			2024
+		</div>
 	</div>
 </body>
 </html>

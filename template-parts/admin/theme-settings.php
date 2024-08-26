@@ -42,7 +42,7 @@ $integration_names = [
 	<label for="svitmov-emails">
 		<?php esc_html_e( 'Електронна Пошта', 'svitmov' ); ?>
 	</label>
-	<textarea name="svitmov-emails" id="svitmov-emails" style="margin-bottom: 24px" rows="5"><?php echo esc_html( implode( "\n", ! $args['contact']['fields']['svitmov-emails'] ? [] : $args['contact']['fields']['svitmov-phone'] ) ); ?></textarea>
+	<textarea name="svitmov-emails" id="svitmov-emails" style="margin-bottom: 24px" rows="5"><?php echo esc_html( implode( "\n", ! $args['contact']['fields']['svitmov-emails'] ? [] : $args['contact']['fields']['svitmov-emails'] ) ); ?></textarea>
 	<label for="svitmov-embedded">
 		<?php esc_html_e( 'Вставити Карту', 'svitmov' ); ?>
 	</label>

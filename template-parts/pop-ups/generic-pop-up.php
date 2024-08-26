@@ -12,7 +12,7 @@ if ( empty( $args ) ) {
 }
 
 ?>
-<div class="review-form pop-up-form pop-up-target" rel="review-pop-up">
+<div class="<?php echo esc_attr( $args['form-name'] ?? 'review-form' ); ?> pop-up-form pop-up-target" rel="<?php echo esc_attr( $args['rel'] ?? 'review-pop-up' ); ?>">
 	<div class="form-content">
 		<?php if ( ! empty( $args['title'] ) ) : ?>
 			<h3 class="form-title"><?php echo esc_html( $args['title'] ); ?></h3>

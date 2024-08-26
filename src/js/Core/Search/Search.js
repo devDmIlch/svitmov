@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		searchSubmit.addEventListener('click', (e) => {
 			e.preventDefault();
 			// Redirect to search page.
-			console.log(window.location);
 			window.location.replace(window.location.origin + '/search/' + searchField.value);
 		});
 	});

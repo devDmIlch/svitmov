@@ -13,9 +13,10 @@
 			<label class="text" for="newsletter-email">
 				<?php esc_html_e( 'Підпишися на наші соціальні мережі', 'svitmov' ); ?>
 			</label>
-			<?php foreach ( get_options( [ 'svitmov-social-ig', 'svitmov-social-yt', 'svitmov-social-fb' ] ) as $name => $link ) : ?>
+			<?php foreach ( get_options( [ 'svitmov-social-ig', 'svitmov-social-yt', 'svitmov-social-fb', 'svitmov-social-tg', 'svitmov-social-vb' ] ) as $name => $link ) : ?>
 				<?php if ( ! empty( $link ) ) : ?>
 					<a class="social-link <?php echo esc_attr( $name ); ?>" href="<?php echo esc_url( $link ); ?>" target="_blank">
+						<?php \Svitmov\Includes\Helpers::the_svg_file( $name ); ?>
 					</a>
 				<?php endif; ?>
 			<?php endforeach; ?>

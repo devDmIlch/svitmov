@@ -9,7 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		return;
 	}
 
-	console.log(mainMenuEl);
+	const shrinkOffset = 35; let isHeaderShrunk = !(window.scrollY > 35);
+	// Add scrolling to dynamically shrink menu.
+	window.addEventListener('scroll', (e) => {
+		if (window.scrollY > shrinkOffset) {
+			if (!isHeaderShrunk) {
+				// Set class to shrunk the header.
+				siteHeader.classList.add('shrunk');
+				// Update flag value.
+				isHeaderShrunk = true;
+			}
+		} else {
+			if (isHeaderShrunk) {
+				// Set flag to expand header.
+				siteHeader.classList.remove('shrunk');
+				// Update flag value.
+				isHeaderShrunk = false;
+			}
+		}
+	});
 
 	// Save last opened dropdown.
 	let lastOpenedDropdown = [];

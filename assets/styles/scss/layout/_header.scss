@@ -1,11 +1,12 @@
 
 .site-header {
-	@include position(absolute, $top: 0, $left: 0, $z-index: 10);
+	@include position(fixed, $top: var(--wp-admin--admin-bar--height, 0), $left: 0, $z-index: 10);
 	width: 100%;
 	padding: 0 20px;
 	box-sizing: border-box;
 	background-color: $white;
 	border-bottom: 2px solid transparent;
+	box-shadow: 0 -40px 30px 0 $text-color;
 	transition: .2s;
 
 	&.moved {
@@ -16,12 +17,27 @@
 		margin-top: 120px;
 	}
 
+	&.shrunk {
+		box-shadow: 0 -15px 30px 0 $text-color;
+
+		.header-content {
+			height: 80px;
+
+			.main-menu-mobile {
+				.menu-controls {
+					margin-top: 24px;
+				}
+			}
+		}
+	}
+
 	.header-content {
 		@include flex($gap: 36px, $align-items: center);
 		@include max-width($width: 100%, $max-width: 1220px);
 		height: 120px;
 		margin: 0 auto;
 		background-color: $white;
+		transition: .2s;
 
 		.main-menu-desktop {
 
@@ -135,6 +151,8 @@
 		}
 
 		.main-menu-trigger {
+			cursor: pointer;
+
 			@media screen and (min-width: 1025px) {
 				display: none;
 			}
